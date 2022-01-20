@@ -24,9 +24,9 @@ export class UserService {
     const newUser = await this.userModel.findOne({
       $or: [{ email: data.email }, { cpf: data.cpf }],
     });
-    if (newUser) {
-      throw new ConflictException('Email ou CPF já cadastrados');
-    }
+    // if (newUser) {
+    //   throw new ConflictException('Email ou CPF já cadastrados');
+    // }
     return await new this.userModel(data).save();
   }
 
