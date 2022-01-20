@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto, AuthResponse } from './dto/login.dto';
@@ -26,11 +26,11 @@ export class UserController {
     return await this.userService.findAll();
   }
 
-  @Get('findOne')
+  @Get('findOne/:id')
   @ApiOperation({
     summary: 'Listar um usuário cadastrado',
   })
-  async findOne(id: string): Promise<User> {
+  async findOne(@Param('id') id: string): Promise<User> {
     return await this.userService.findOne(id);
   }
 
