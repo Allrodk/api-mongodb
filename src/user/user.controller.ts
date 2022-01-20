@@ -22,8 +22,16 @@ export class UserController {
   @ApiOperation({
     summary: 'Listar os usuários cadastrados',
   })
-  async findAll(): Promise<any[]>{
+  async findAll(): Promise<any[]> {
     return await this.userService.findAll();
+  }
+
+  @Get('findOne')
+  @ApiOperation({
+    summary: 'Listar um usuário cadastrado',
+  })
+  async findOne(id: string): Promise<User> {
+    return await this.userService.findOne(id);
   }
 
   // @Post('users')
